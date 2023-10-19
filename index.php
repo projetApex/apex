@@ -9,5 +9,11 @@
 </head>
 <body>
     <h1>Apex</h1>
+
+    <img src="./style/assets/wraith.jpg" alt="">
+    <img src="./style/assets/octane.jpg" alt="">
+    <img src="./style/assets/revenant.jpg" alt="">
+    <img src="./style/assets/catalyst.jpg" alt="">
+
 </body>
 </html>
