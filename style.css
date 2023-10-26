@@ -1,0 +1,52 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(./style/assets/background_apex.png);
+    background-size: cover;
+    height: 100vh;
+}
+
+.contains {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.box {
+    height: 600px;
+    width: 300px;
+    background-color: blue;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+ .wraith {
+    height: 600px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.octane {
+    height: 600px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.revenant {
+    height: 600px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.catalyst {
+    height: 600px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+} 
