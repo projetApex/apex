@@ -7,10 +7,9 @@ try
     $recipesStatement = $db->prepare($sql);
     $recipesStatement->execute();
     $recipes = $recipesStatement->fetchAll(PDO::FETCH_ASSOC);
+
     
-    // echo 'Nom : ' . $recipes[1]['name'] . '<br>';
-    // echo 'Nom : ' . $recipes[2]['name'] . '<br>';
-    // echo 'Nom : ' . $recipes[3]['name'] . '<br>';
+    
 }
 catch (Exception $e)
 {
@@ -30,6 +29,9 @@ catch (Exception $e)
     <div class="contains">
         <div class="box">
             <img class="wraith" src="<?php echo $recipes[0]['img_perso']?>" alt="">
+            <div class="skill">
+                
+            </div>
         </div>
         <div class="box">
             <img class="octane" src="<?php echo $recipes[1]['img_perso']?>" alt="">

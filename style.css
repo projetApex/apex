@@ -21,13 +21,20 @@ body {
     background-color: blue;
     border-radius: 10px;
     cursor: pointer;
+    transition: 0.5s;
 }
 
- .wraith {
+.box:hover {
+    transform: scale(1.1);
+    width: 500px;
+}
+
+.wraith {
     height: 600px;
     width: 300px;
     object-fit: cover;
     border-radius: 10px;
+    transition: 0.5s;
 }
 
 .octane {
