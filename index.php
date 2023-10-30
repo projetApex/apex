@@ -1,7 +1,7 @@
 <?php
 try
 {
-	$db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', '');
+	$db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', 'root');
 
     $sql = 'SELECT * FROM img';
     $recipesStatement = $db->prepare($sql);
@@ -19,12 +19,14 @@ catch (Exception $e)
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
+
 <body>
     <div class="contains">
         <div class="box">
@@ -44,4 +46,5 @@ catch (Exception $e)
         </div>
     </div>
 </body>
+
 </html>
