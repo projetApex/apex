@@ -1,12 +1,17 @@
 <?php
 try
 {
-	$db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', 'root');
+	$db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', '');
 
     $sql = 'SELECT * FROM img';
     $recipesStatement = $db->prepare($sql);
     $recipesStatement->execute();
     $recipes = $recipesStatement->fetchAll(PDO::FETCH_ASSOC);
+
+    $sql2 = 'SELECT * FROM spell_img';
+    $recipesStatement2 = $db->prepare($sql2);
+    $recipesStatement2->execute();
+    $recipes2 = $recipesStatement2->fetchAll(PDO::FETCH_ASSOC);
 
     
     
@@ -23,7 +28,7 @@ catch (Exception $e)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style1.css">
     <title>Document</title>
 </head>
 
@@ -32,17 +37,34 @@ catch (Exception $e)
         <div class="box">
             <img class="wraith" src="<?php echo $recipes[0]['img_perso']?>" alt="">
             <div class="skill">
-                
+                <img class="spell" src="<?php echo $recipes2[0]['passive_img']?>" alt="">
+                <img class="spell" src="<?php echo $recipes2[0]['tactical_img']?>" alt="">
+                <img class="spell" src="<?php echo $recipes2[0]['ultime_img']?>" alt="">
             </div>
         </div>
         <div class="box">
             <img class="octane" src="<?php echo $recipes[1]['img_perso']?>" alt="">
+            <div class="skill">
+                <img class="spell" src="<?php echo $recipes2[1]['passive_img']?>" alt="">
+                <img class="spell" src="<?php echo $recipes2[1]['tactical_img']?>" alt="">
+                <img class="spell" src="<?php echo $recipes2[1]['ultime_img']?>" alt="">
+            </div>
         </div>
         <div class="box">
             <img class="revenant" src="<?php echo $recipes[2]['img_perso']?>" alt="">
+            <div class="skill">
+                <img class="spell" src="<?php echo $recipes2[2]['passive_img']?>" alt="">
+                <img class="spell" src="<?php echo $recipes2[2]['tactical_img']?>" alt="">
+                <img class="spell" src="<?php echo $recipes2[2]['ultime_img']?>" alt="">
+            </div>
         </div>
         <div class="box">
             <img class="catalyst" src="<?php echo $recipes[3]['img_perso']?>" alt="">
+            <div class="skill">
+                <img class="spell" src="<?php echo $recipes2[3]['passive_img']?>" alt="">
+                <img class="spell" src="<?php echo $recipes2[3]['tactical_img']?>" alt="">
+                <img class="spell" src="<?php echo $recipes2[3]['ultime_img']?>" alt="">
+            </div>
         </div>
     </div>
 </body>

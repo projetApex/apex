@@ -17,9 +17,10 @@ body {
 }
 
 .box {
+    display: flex;
     height: 600px;
     width: 300px;
-    background-color: blue;
+    background-color: #EB4141;
     border-radius: 10px;
     cursor: pointer;
     transition: 0.5s;
@@ -61,5 +62,10 @@ body {
 
 .spell {
     height: 200px;
-    width: 100px;
+    width: 200px;
+    visibility: hidden;
+}
+
+.box:hover .spell {
+    visibility: visible;
 }
