@@ -1,8 +1,17 @@
 <?php
+$host = getenv('DB_HOST');
+$dbname = getenv('DB_NAME');
+$user = getenv('DB_USER');
+$password = getenv('DB_PASSWORD');
+$port = getenv('DB_PORT');
+
+
+
 try
 {
 	// $db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', '');
-	$db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', 'root');
+    $db = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $user, $password);    
+
 
     $sql = 'SELECT * FROM img';
     $recipesStatement = $db->prepare($sql);
@@ -22,7 +31,7 @@ try
 }
 catch (Exception $e)
 {
-        die('Erreur : ' . $e->getMessage());
+        die('Erreur : ' . $e->getMessage());    
 }
 ?>
 
@@ -33,7 +42,8 @@ catch (Exception $e)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style2.css">
-    <title>Document</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Apex Legend</title>
 </head>
 
 <body>
