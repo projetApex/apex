@@ -2,14 +2,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(./style/assets/background_apex.png);
+    background: url(./assets/background_apex.png);
     background-size: cover;
     height: 100vh;
     overflow: hidden;
 }
 @font-face {
     font-family: Apex-Regular;
-    src: url(./style/assets/fonts/fonts/Apex-Regular.ttf);
+    src: url(./assets/fonts/fonts/Apex-Regular.ttf);
 }
 .contains {
     display: flex;
@@ -64,7 +64,7 @@ body {
 } 
 
 .spell {
-    height: 135px;
+    height: 105px;
     width: 135px;
     visibility: hidden;
     margin-left: 25px;
@@ -88,6 +88,12 @@ body {
 
 .box:hover .spell {
     visibility: visible;
+}
+.skill {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* .spell::after {
