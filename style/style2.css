@@ -2,12 +2,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(./style/assets/background_apex.png);
+    background: url(./assets/background_apex.png);
     background-size: cover;
     height: 100vh;
     overflow: hidden;
 }
-
+@font-face {
+    font-family: Apex-Regular;
+    src: url(./assets/fonts/fonts/Apex-Regular.ttf);
+}
 .contains {
     display: flex;
     height: 100%;
@@ -17,9 +20,10 @@ body {
 }
 
 .box {
+    display: flex;
     height: 600px;
     width: 300px;
-    background-color: blue;
+    background-color: #EB4141;
     border-radius: 10px;
     cursor: pointer;
     transition: 0.5s;
@@ -60,6 +64,32 @@ body {
 } 
 
 .spell {
-    height: 200px;
-    width: 100px;
+    height: 135px;
+    width: 135px;
+    visibility: hidden;
+    margin-left: 25px;
 }
+
+.name {
+    font-family: Apex-Regular;
+    letter-spacing: 0.5px;
+    color: white;
+    margin-left: 25px;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    visibility: hidden;
+
+}
+
+.box:hover .name {
+    visibility: visible;
+}
+
+.box:hover .spell {
+    visibility: visible;
+}
+
+/* .spell::after {
+    opacity: 0;
+} */
