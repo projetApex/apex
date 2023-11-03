@@ -1,16 +1,15 @@
 <?php
-$host = getenv('DB_HOST');
-$dbname = getenv('DB_NAME');
-$user = getenv('DB_USER');
-$password = getenv('DB_PASSWORD');
-$port = getenv('DB_PORT');
 
 
+
+require_once __DIR__ . '/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 try
 {
-	// $db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', '');
-    $db = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $user, $password);    
+	// $db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', 'root');
+    $db = new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';port=' . $_ENV["DB_PORT"] . ';dbname=' .  $_ENV['DB_DATABASE']  . ';charset=utf8', $_ENV['DB_NAME'], $_ENV['DB_PASSWORD']);
 
 
     $sql = 'SELECT * FROM img';
