@@ -12,7 +12,6 @@ try
 	// $db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', 'root');
     $db = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $user, $password);    
 
-
     $sql = 'SELECT * FROM img';
     $recipesStatement = $db->prepare($sql);
     $recipesStatement->execute();
