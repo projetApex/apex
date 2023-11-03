@@ -7,7 +7,10 @@ body {
     height: 100vh;
     overflow: hidden;
 }
-
+@font-face {
+    font-family: Apex-Regular;
+    src: url(./style/assets/fonts/fonts/Apex-Regular.ttf);
+}
 .contains {
     display: flex;
     height: 100%;
@@ -61,11 +64,32 @@ body {
 } 
 
 .spell {
-    height: 200px;
-    width: 200px;
+    height: 135px;
+    width: 135px;
     visibility: hidden;
+    margin-left: 25px;
+}
+
+.name {
+    font-family: Apex-Regular;
+    letter-spacing: 0.5px;
+    color: white;
+    margin-left: 25px;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    visibility: hidden;
+
+}
+
+.box:hover .name {
+    visibility: visible;
 }
 
 .box:hover .spell {
     visibility: visible;
 }
+
+/* .spell::after {
+    opacity: 0;
+} */
