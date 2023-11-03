@@ -1,34 +1,46 @@
-<!doctype html>
+<?php
+try
+{
+	$db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', '');
+
+    $sql = 'SELECT * FROM img';
+    $recipesStatement = $db->prepare($sql);
+    $recipesStatement->execute();
+    $recipes = $recipesStatement->fetchAll(PDO::FETCH_ASSOC);
+    
+    // echo 'Nom : ' . $recipes[1]['name'] . '<br>';
+    // echo 'Nom : ' . $recipes[2]['name'] . '<br>';
+    // echo 'Nom : ' . $recipes[3]['name'] . '<br>';
+}
+catch (Exception $e)
+{
+        die('Erreur : ' . $e->getMessage());
+}
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
-
 <body>
-    <?php include('header.php'); ?>
-    <h1>Apex</h1>
-
-    <?php
-    // Connexion à la base de données
-    $bdd = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', '');
-
-    // Requête SQL pour récupérer les images
-    $query = $bdd->query("SELECT image_data FROM images");
-
-    // Boucle pour afficher les images
-    while ($row = $query->fetch()) {
-        // Affichage de l'image
-        echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image_data']) . '" />';
-    }
-
-    // Fermeture de la requête
-    $query->closeCursor();
-    ?>
-
+    <div class="contains">
+        <div class="box">
+            <img class="wraith" src="<?php echo $recipes[0]['img_perso']?>" alt="">
+        </div>
+        <div class="box">
+            <img class="octane" src="<?php echo $recipes[1]['img_perso']?>" alt="">
+        </div>
+        <div class="box">
+            <img class="revenant" src="<?php echo $recipes[2]['img_perso']?>" alt="">
+        </div>
+        <div class="box">
+            <img class="catalyst" src="<?php echo $recipes[3]['img_perso']?>" alt="">
+        </div>
+    </div>
 </body>
-
 </html>
