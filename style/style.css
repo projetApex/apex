@@ -1,0 +1,122 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(./assets/background_apex.png);
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+}
+@font-face {
+    font-family: Apex-Regular;
+    src: url(./assets/fonts/fonts/Apex-Regular.ttf);
+    src: url(./assets/fonts/fonts/Apex-ExtraBold.ttf);
+}
+@font-face {
+    font-family: Apex-Extrabold;
+    src: url(./assets/fonts/fonts/Apex-ExtraBold.ttf);
+}
+
+.contains {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.box {
+    display: flex;
+    height: 600px;
+    width: 300px;
+    background: url(./assets/background_apex.png);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.box:hover {
+    transform: scale(1.1);
+    width: 500px;
+}
+
+.wraith {
+    height: 600px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.octane {
+    height: 600px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.revenant {
+    height: 600px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.catalyst {
+    height: 600px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+} 
+
+.spell {
+    height: 105px;
+    width: 135px;
+    visibility: hidden;
+    margin-left: 25px;
+}
+
+.name {
+    font-family: Apex-Regular;
+    letter-spacing: 0.5px;
+    color: white;
+    margin-left: 25px;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    visibility: hidden;
+
+}
+
+.box:hover .name {
+    visibility: visible;
+}
+
+.box:hover .spell {
+    visibility: visible;
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.perso {
+    
+    font-family: Apex-Extrabold;
+    letter-spacing: 0.5px;
+    color: white;
+    margin-left: 25px;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    visibility: hidden;
+
+}
+
+.box:hover .perso {
+    visibility: visible;
+
+}
