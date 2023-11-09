@@ -10,7 +10,13 @@ body {
 @font-face {
     font-family: Apex-Regular;
     src: url(./assets/fonts/fonts/Apex-Regular.ttf);
+    src: url(./assets/fonts/fonts/Apex-ExtraBold.ttf);
 }
+@font-face {
+    font-family: Apex-Extrabold;
+    src: url(./assets/fonts/fonts/Apex-ExtraBold.ttf);
+}
+
 .contains {
     display: flex;
     height: 100%;
@@ -23,7 +29,7 @@ body {
     display: flex;
     height: 600px;
     width: 300px;
-    background-color: #EB4141;
+    background: url(./assets/background_apex.png);
     border-radius: 10px;
     cursor: pointer;
     transition: 0.5s;
@@ -89,6 +95,7 @@ body {
 .box:hover .spell {
     visibility: visible;
 }
+
 .skill {
     display: flex;
     flex-direction: column;
@@ -96,6 +103,20 @@ body {
     align-items: center;
 }
 
-/* .spell::after {
-    opacity: 0;
-} */
+.perso {
+    
+    font-family: Apex-Extrabold;
+    letter-spacing: 0.5px;
+    color: white;
+    margin-left: 25px;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    visibility: hidden;
+
+}
+
+.box:hover .perso {
+    visibility: visible;
+
+}
