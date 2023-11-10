@@ -53,7 +53,6 @@ catch (Exception $e)
 <body>
     <div class="contains">
         <div class="box">
-        <!-- <a href="character.php?id=1"> -->
             <img class="wraith" src="<?php echo $recipes[0]['img_perso']?>" alt="">
             <div class="skill">
                 <h3 class="perso"><?php echo $recipes4[0]['name']?></h3>
@@ -64,10 +63,8 @@ catch (Exception $e)
                 <img class="spell" src="<?php echo $recipes2[0]['ultime_img']?>" alt="">
                 <p class="name"><?php echo $recipes3[0]['ultime']?></p>
             </div>
-        <!-- </a> -->
         </div>
         <div class="box">
-        <!-- <a href="character.php?id=2"> -->
             <img class="octane" src="<?php echo $recipes[1]['img_perso']?>" alt="">
             <div class="skill">
             <h3 class="perso"><?php echo $recipes4[1]['name']?></h3>
@@ -78,7 +75,6 @@ catch (Exception $e)
                 <img class="spell" src="<?php echo $recipes2[1]['ultime_img']?>" alt="">
                 <p class="name"><?php echo $recipes3[1]['ultime']?></p>
             </div>
-        <!-- </a> -->
         </div>
         <div class="box">
             <img class="revenant" src="<?php echo $recipes[2]['img_perso']?>" alt="">
