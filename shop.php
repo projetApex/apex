@@ -45,8 +45,7 @@ catch (Exception $e)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/index.css">
-
+    <link rel="stylesheet" href="./style/shop.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Apex Legend</title>
 </head>
@@ -105,11 +104,9 @@ catch (Exception $e)
                 <p class="name"><?php echo $recipes3[3]['ultime']?></p>
             </div>
         </div>
-        
-        <!-- <button class="boutique" href="./shop.php">Acceder a la boutique</button>  -->
     </div>
-    <form action="shop.php">
-            <button type="submit" class="shop">Aller a la boutique</button>
+    <form action="index.php">
+            <button type="submit" class="boutique">Menu principal</button>
         </form>
     <!-- <script src="./js/script.js"></script> -->
 </body>
