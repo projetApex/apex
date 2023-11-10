@@ -8,13 +8,12 @@ $dotenv->load();
 
 try
 {
-	// $db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', 'root');
     $db = new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';port=' . $_ENV["DB_PORT"] . ';dbname=' .  $_ENV['DB_DATABASE']  . ';charset=utf8', $_ENV['DB_NAME'], $_ENV['DB_PASSWORD']);
 
     $sql = 'SELECT * FROM img';
-    $recipesStatement = $db->prepare($sql);
-    $recipesStatement->execute();
-    $recipes = $recipesStatement->fetchAll(PDO::FETCH_ASSOC);
+    $recipesStatement = $db->prepare($sql);//prepare sql request
+    $recipesStatement->execute();//execute sql request
+    $recipes = $recipesStatement->fetchAll(PDO::FETCH_ASSOC);//fetch all data from sql request
 
     $sql2 = 'SELECT * FROM spell_img';
     $recipesStatement2 = $db->prepare($sql2);
@@ -35,7 +34,7 @@ try
 }
 catch (Exception $e)
 {
-        die('Erreur : ' . $e->getMessage());    
+        die('Erreur : ' . $e->getMessage());//stop the process and show error message
 }
 ?>
 
@@ -54,7 +53,7 @@ catch (Exception $e)
     <div class="contains">
         <div class="box">
         <!-- <a href="character.php?id=1"> -->
-            <img class="wraith" src="<?php echo $recipes[0]['img_perso']?>" alt="">
+            <img class="wraith" src="<?php  echo $recipes[0]['img_perso']?>" alt="">
             <div class="skill">
                 <h3 class="perso"><?php echo $recipes4[0]['name']?></h3>
                 <img class="spell" src="<?php echo $recipes2[0]['passive_img']?>" alt="">
