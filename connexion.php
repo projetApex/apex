@@ -33,16 +33,9 @@ if(isset($_POST['envoi'])) {
                     header('Location: index.php');
                 }
 
-
-
             } else {
                 echo 'Mauvais identifiant ou mot de passe';
             }
-
-
-
-
-
 
 
     } else {
