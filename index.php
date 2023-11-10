@@ -60,8 +60,7 @@ catch (Exception $e)
     <button>Deconnexion</button>
 </a>
     <div class="contains">
-        <div class="box">
-        <!-- <a href="character.php?id=1"> -->
+        <div class="box" id="1">
             <img class="wraith" src="<?php  echo $recipes[0]['img_perso']?>" alt="">
             <div class="skill">
                 <h3 class="perso"><?php echo $recipes4[0]['name']?></h3>
@@ -72,10 +71,8 @@ catch (Exception $e)
                 <img class="spell" src="<?php echo $recipes2[0]['ultime_img']?>" alt="">
                 <p class="name"><?php echo $recipes3[0]['ultime']?></p>
             </div>
-        <!-- </a> -->
         </div>
-        <div class="box">
-        <!-- <a href="character.php?id=2"> -->
+        <div class="box" id="2">
             <img class="octane" src="<?php echo $recipes[1]['img_perso']?>" alt="">
             <div class="skill">
             <h3 class="perso"><?php echo $recipes4[1]['name']?></h3>
@@ -86,9 +83,8 @@ catch (Exception $e)
                 <img class="spell" src="<?php echo $recipes2[1]['ultime_img']?>" alt="">
                 <p class="name"><?php echo $recipes3[1]['ultime']?></p>
             </div>
-        <!-- </a> -->
         </div>
-        <div class="box">
+        <div class="box" id="3">
             <img class="revenant" src="<?php echo $recipes[2]['img_perso']?>" alt="">
             <div class="skill">
             <h3 class="perso"><?php echo $recipes4[2]['name']?></h3>
@@ -100,7 +96,7 @@ catch (Exception $e)
                 <p class="name"><?php echo $recipes3[2]['ultime']?></p>
             </div>
         </div>
-        <div class="box">
+        <div class="box" id="4">
             <img class="catalyst" src="<?php echo $recipes[3]['img_perso']?>" alt="">
             <div class="skill">
             <h3 class="perso"><?php echo $recipes4[3]['name']?></h3>
@@ -118,7 +114,7 @@ catch (Exception $e)
     <form action="shop.php">
             <button type="submit" class="shop">Aller a la boutique</button>
         </form>
-    <!-- <script src="./js/script.js"></script> -->
+    <script src="./js/index.js"></script>
 </body>
 
 </html>
