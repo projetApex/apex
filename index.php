@@ -1,6 +1,11 @@
 <?php
 
+session_start();
+echo $_SESSION['email'];
 
+if(!isset($_SESSION['email'])) {
+    header('Location: connexion.php');
+}
 
 require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -51,6 +56,9 @@ catch (Exception $e)
 </head>
 
 <body>
+<a href="./deconnexion.php">
+    <button>Deconnexion</button>
+</a>
     <div class="contains">
         <div class="box">
         <!-- <a href="character.php?id=1"> -->

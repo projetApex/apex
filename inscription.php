@@ -12,8 +12,7 @@ $dotenv->load();
         if(!empty($_POST['email']) && !empty($_POST['mdp'])) {
 
             $email  = htmlspecialchars($_POST['email']);
-            $mdp = htmlspecialchars($_POST['mdp']);
-            password_hash($mdp, PASSWORD_DEFAULT);
+            $mdp = sha1($_POST['mdp']);
 
             $insertInventaire = $db -> prepare('SELECT * FROM inventaire ORDER BY id_inventaire DESC LIMIT 1');
             $insertInventaire -> execute();
