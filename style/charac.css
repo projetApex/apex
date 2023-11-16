@@ -3,6 +3,7 @@ body {
     background-size: cover;
     height: 100vh;
     font-family: 'Apewx-Regular', sans-serif;
+    overflow: hidden;
 }
 
 
