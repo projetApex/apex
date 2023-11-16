@@ -114,6 +114,9 @@ catch (Exception $e)
     <form action="shop.php">
             <button type="submit" class="shop">Aller a la boutique</button>
         </form>
+
+
+
     <script src="./js/index.js"></script>
 </body>
 
