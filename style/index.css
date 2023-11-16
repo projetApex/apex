@@ -119,6 +119,18 @@ body {
 
 .image-options {
     display: none;
+    position: absolute;
+    top: 0;
+    /* ou ajustez selon votre mise en page */
+    left: 0;
+    /* ou ajustez selon votre mise en page */
+    z-index: 2;
+    /* assurez-vous que le menu déroulant est au-dessus des autres éléments */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .image-options.show {
@@ -126,6 +138,23 @@ body {
     flex-direction: column;
 }
 
+.image-options:hover {
+    background-color: #f8f8f8;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.image-options::after {
+    content: '\25BC';
+    /* Utilisez une flèche vers le bas Unicode comme contenu après */
+    font-size: 14px;
+    color: #555;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    /* Assurez-vous que la flèche ne bloque pas les événements de souris */
+}
 
 .show-options-button {
     background-color: #000000;
@@ -201,7 +230,7 @@ a:hover .fa-angle-down {
     transform: rotate(-90deg);
 }
 
-.button2 {  
+.button2 {
     visibility: hidden;
     position: relative;
     margin-top: 0px;
@@ -230,8 +259,10 @@ a:hover .fa-angle-down {
     padding: 8px;
     border: none;
     border-radius: 5px;
-    appearance: none; /* Supprime les styles par défaut du navigateur */
-    font-size: 0; /* Cache le texte du select */
+    appearance: none;
+    /* Supprime les styles par défaut du navigateur */
+    font-size: 0;
+    /* Cache le texte du select */
 }
 
 /* Ajoutez ces règles pour améliorer l'apparence du menu déroulant au survol */
@@ -242,14 +273,16 @@ a:hover .fa-angle-down {
 
 /* Ajoutez ces règles pour améliorer l'apparence de la flèche du menu déroulant */
 .image-selector::after {
-    content: '\25BC'; /* Utilisez une flèche vers le bas Unicode comme contenu après */
+    content: '\25BC';
+    /* Utilisez une flèche vers le bas Unicode comme contenu après */
     font-size: 14px;
     color: #555;
     position: absolute;
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
-    pointer-events: none; /* Assurez-vous que la flèche ne bloque pas les événements de souris */
+    pointer-events: none;
+    /* Assurez-vous que la flèche ne bloque pas les événements de souris */
 }
 
 

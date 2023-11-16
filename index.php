@@ -67,9 +67,7 @@ try {
         <buttondeco>Deconnexion</buttondeco>
     </a>
 
-    <form action="shop.php">
-        <button type="submit" class="shop">Aller a la boutique</button>
-    </form>
+
 
 
     <div class="contains">
@@ -77,55 +75,55 @@ try {
         for ($i = 0; $i < count($recipes); $i++) {
             ?>
 
-           <?php $UserID = $i + 1; ?>
+            <?php $UserID = $i + 1; ?>
 
-        <div class="box" id="<?php echo strval($UserID) ?>">
+            <div class="box" id="<?php echo strval($UserID) ?>">
 
-        <?php
-                // Affiche la liste déroulante uniquement à l'intérieur des boîtes
-                if ($i === 0) { // ou toute autre condition pertinente
-                    ?>
 
-            <select class="image-selector global-selector" data-character-index="-1">
-                <?php
+
+                <select class="image-selector global-selector" data-character-index="<?= $i - 1 ?>">
+                    <?php
                     foreach ($recipes as $image) {
                         echo '<option value="' . $image['img_path'] . '" > ' . $image['img_number'] . '</option>';
                     }
                     ?>
-            </select>
-            <?php
-                }
-                ?>
+                </select>
 
 
 
-            <img class="character-image" src="<?php echo $recipes[$i]['img_perso'] ?>" alt="">
-            <div class="skill">
-                <h3 class="perso">
-                    <?php echo $recipes4[$i]['name'] ?>
-                </h3>
-                <img class="spell" src="<?php echo $recipes2[$i]['passive_img'] ?>" alt="">
-                <p class="name">
-                    <?php echo $recipes3[$i]['passive'] ?>
-                </p>
-                <img class="spell" src="<?php echo $recipes2[$i]['tactical_img'] ?>" alt="">
-                <p class="name">
-                    <?php echo $recipes3[$i]['tactical'] ?>
-                </p>
-                <img class="spell" src="<?php echo $recipes2[$i]['ultime_img'] ?>" alt="">
-                <p class="name">
-                    <?php echo $recipes3[$i]['ultime'] ?>
-                </p>
-                <div class="titre">
-                    <p><a href="" class="button2"><i class="fas fa-angle-down"></i> <span>Description</span></a></p>
+
+                <img class="character-image" src="<?php echo $recipes[$i]['img_perso'] ?>" alt="">
+                <div class="skill">
+                    <h3 class="perso">
+                        <?php echo $recipes4[$i]['name'] ?>
+                    </h3>
+                    <img class="spell" src="<?php echo $recipes2[$i]['passive_img'] ?>" alt="">
+                    <p class="name">
+                        <?php echo $recipes3[$i]['passive'] ?>
+                    </p>
+                    <img class="spell" src="<?php echo $recipes2[$i]['tactical_img'] ?>" alt="">
+                    <p class="name">
+                        <?php echo $recipes3[$i]['tactical'] ?>
+                    </p>
+                    <img class="spell" src="<?php echo $recipes2[$i]['ultime_img'] ?>" alt="">
+                    <p class="name">
+                        <?php echo $recipes3[$i]['ultime'] ?>
+                    </p>
+                    <div class="titre">
+                        <p><a href="" class="button2"><i class="fas fa-angle-down"></i> <span>Description</span></a></p>
+                    </div>
                 </div>
+
             </div>
-        </div>
-        <?php
+
+            <?php
         }
         ?>
+       
     </div>
-
+    <form action="shop.php">
+        <button type="submit" class="shop">Aller a la boutique</button>
+    </form>
 
 
     <script src="./js/index.js"></script>

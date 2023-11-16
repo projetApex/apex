@@ -24,3 +24,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const imageSelectors = document.querySelectorAll('.global-selector');
+
+  imageSelectors.forEach((selector) => {
+      selector.addEventListener('mouseenter', function () {
+          const box = this.closest('.box');
+          const characterImage = box.querySelector('.character-image');
+          const imageOptions = box.querySelector('.image-options');
+
+          if (characterImage) {
+              const imageIndex = characterImage.getAttribute('data-character-index');
+              const isVisible = imageOptions.classList.contains('show');
+
+              if (imageIndex !== null && !isVisible) {
+                  imageOptions.classList.add('show');
+              }
+          }
+      });
+
+      selector.addEventListener('mouseleave', function () {
+          const box = this.closest('.box');
+          const imageOptions = box.querySelector('.image-options');
+          imageOptions.classList.remove('show');
+      });
+  });
+});
+
+// Ajoutez ce bloc de code pour masquer le menu déroulant lorsqu'on quitte la boîte
+const boxes = document.querySelectorAll('.box');
+
+boxes.forEach((box) => {
+  box.addEventListener('mouseleave', function () {
+      const imageOptions = this.querySelector('.image-options');
+      if (imageOptions) {
+          imageOptions.classList.remove('show');
+      }
+  });
+});
+
