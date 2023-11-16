@@ -20,7 +20,7 @@ if(isset($_POST['envoi'])) {
 
             if ($recupUser->rowCount() > 0) {
 
-                if($email == 'admin@admin.com' && $mdp == $_ENV['ADMIN_PASSWORD']) {
+                if($email == $_ENV['ADMIN_EMAIL'] && $mdp == $_ENV['ADMIN_PASSWORD']) {
                     $_SESSION['email'] = $email;
                     $_SESSION['mdp'] = $mdp;
                     $_SESSION['id'] = $recupUser->fetch()['id_utilisateur'];
@@ -47,19 +47,27 @@ if(isset($_POST['envoi'])) {
 
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<form method="POST" action="">
-    <input type="email" name="email" placeholder="email" autocomplete="off">
-    <input type="password" name="mdp" placeholder="password" autocomplete="off">
+    <link rel="stylesheet" href="./style/log.css">
 
-    <input type="submit" name="envoi">
-</form>
+    <title>Connexion</title>
+</head>
+
+<body>
+    <h1>Connexion</h1>
+    <form method="POST" action="">
+        <input type="email" name="email" placeholder="email" autocomplete="off">
+        <input type="password" name="mdp" placeholder="password" autocomplete="off">
+
+        <input class="btn2" type="submit" name="envoi" placeholder="Connexion">
+    </form>
+    <p>Pas encore de compte ? <a href="./inscription.php">Inscrivez-vous</a></p>
+
 </body>
+
 </html>
