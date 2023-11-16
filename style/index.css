@@ -1,6 +1,5 @@
 body {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: url(./assets/background_apex.png);
@@ -8,15 +7,18 @@ body {
     height: 100vh;
     overflow: hidden;
 }
+
 @font-face {
     font-family: Apex-Regular;
     src: url(./assets/fonts/fonts/Apex-Regular.ttf);
     src: url(./assets/fonts/fonts/Apex-ExtraBold.ttf);
 }
+
 @font-face {
     font-family: Apex-Extrabold;
     src: url(./assets/fonts/fonts/Apex-ExtraBold.ttf);
 }
+
 
 .contains {
     display: flex;
@@ -41,7 +43,8 @@ body {
     width: 500px;
 }
 
-.wraith {
+
+.character-image {
     height: 600px;
     width: 300px;
     object-fit: cover;
@@ -49,26 +52,36 @@ body {
     transition: 0.5s;
 }
 
-.octane {
-    height: 600px;
-    width: 300px;
-    object-fit: cover;
-    border-radius: 10px;
+.skill {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.revenant {
-    height: 600px;
-    width: 300px;
-    object-fit: cover;
-    border-radius: 10px;
+.perso,
+.name,
+.spell {
+    visibility: hidden;
+    margin-left: 25px;
+    font-size: 18px;
+    text-align: center;
+    color: white;
 }
 
-.catalyst {
-    height: 600px;
-    width: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-} 
+.box:hover .perso,
+.box:hover .name,
+.box:hover .spell {
+    visibility: visible;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    background-color: #3498db;
+    border-radius: 50%;
+    margin-right: 5px;
+}
 
 .spell {
     height: 105px;
@@ -80,46 +93,170 @@ body {
 .name {
     font-family: Apex-Regular;
     letter-spacing: 0.5px;
-    color: white;
-    margin-left: 25px;
-    font-size: 17px;
     font-weight: bold;
-    text-align: center;
-    visibility: hidden;
-
 }
 
-.box:hover .name {
-    visibility: visible;
-}
-
+.box:hover .name,
 .box:hover .spell {
     visibility: visible;
 }
 
-.skill {
+.image-options input[type="radio"] {
+    display: none;
+}
+
+.image-options label {
+    cursor: pointer;
+}
+
+.image-options label:hover .circle {
+    background-color: #000;
+}
+
+.image-options input[type="radio"]:checked+label .circle {
+    background-color: #000;
+}
+
+.image-options {
+    display: none;
+}
+
+.image-options.show {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-.perso {
-    
-    font-family: Apex-Extrabold;
-    letter-spacing: 0.5px;
+.show-options-button {
+    background-color: #000000;
     color: white;
-    margin-left: 25px;
-    font-size: 25px;
-    font-weight: bold;
-    text-align: center;
-    visibility: hidden;
-
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 8px;
 }
 
-.box:hover .perso {
-    visibility: visible;
+.show-options-button:hover {
+    background-color: #000;
+}
 
+.button {
+    margin: 15px;
+    position: relative;
+}
+
+a {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    transition: width 0.5s ease-out;
+    width: 8px;
+    padding: 12px 20px 12px 16px;
+    font-size: 20px;
+    color: #00f260;
+    text-decoration: none;
+    animation: 0.5s infinite alternate 3s boutton;
+}
+
+span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    top: -2px;
+    height: 20px;
+    padding-left: 15px;
+    font-family: 'Work Sans';
+    font-weight: 300;
+    color: #0cebeb;
+    letter-spacing: 2px;
+}
+
+@keyframes boutton {
+    0% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(5px);
+    }
+}
+
+a:hover {
+    transition: width 0.5s ease-out;
+    width: 100px;
+    background: #fff;
+    border-radius: 10px;
+    animation: none;
+}
+
+a:hover .fa-angle-down {
+    transition: rotate 0.1s ease;
+    transform: rotate(-90deg);
+}
+
+.button2 {  
+    visibility: hidden;
+    position: relative;
+    margin-top: 0px;
+    margin-right: 0px;
+}
+
+.box:hover .button2 {
+    visibility: visible;
+}
+
+/* Ajoutez ces règles CSS pour personnaliser le style du menu déroulant */
+.image-selector {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.image-selector select {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    appearance: none; /* Supprime les styles par défaut du navigateur */
+    font-size: 0; /* Cache le texte du select */
+}
+
+/* Ajoutez ces règles pour améliorer l'apparence du menu déroulant au survol */
+.image-selector:hover {
+    background-color: #f8f8f8;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajoutez ces règles pour améliorer l'apparence de la flèche du menu déroulant */
+.image-selector::after {
+    content: '\25BC'; /* Utilisez une flèche vers le bas Unicode comme contenu après */
+    font-size: 14px;
+    color: #555;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Assurez-vous que la flèche ne bloque pas les événements de souris */
+}
+
+
+/* Ajoutez cette règle CSS */
+.global-selector {
+    display: none;
+}
+
+.box .global-selector {
+    display: block;
 }
 
 .boutique {
@@ -153,6 +290,3 @@ form {
     cursor: pointer;
     top: 5%;
 }
-
-
-

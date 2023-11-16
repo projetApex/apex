@@ -57,7 +57,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/style3.css">
+    <link rel="stylesheet" href="./style/index.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Apex Legend</title>
 </head>
@@ -66,6 +66,12 @@ try {
     <a href="./deconnexion.php">
         <button>Deconnexion</button>
     </a>
+
+    <form action="shop.php">
+        <button type="submit" class="shop">Aller a la boutique</button>
+    </form>
+
+
     <div class="contains">
         <?php
         for ($i = 0; $i < count($recipes); $i++) {
@@ -79,6 +85,9 @@ try {
                     }
                     ?>
             </select>
+
+
+
             <img class="character-image" src="<?php echo $recipes[$i]['img_perso'] ?>" alt="">
             <div class="skill">
                 <h3 class="perso">
@@ -105,29 +114,10 @@ try {
         }
         ?>
     </div>
-    <form action="shop.php">
-        <button type="submit" class="shop">Aller a la boutique</button>
-    </form>
+
 
 
     <script src="./js/index.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const imageRadios = document.querySelectorAll('input[type=radio]');
-
-            imageRadios.forEach((radio) => {
-                radio.addEventListener('change', function () {
-                    const selectedImage = this.value;
-                    const imageIndex = this.name.split('_')[1];
-                    const characterImage = document.querySelector('.character-image[data-character-index="' + imageIndex + '"]');
-
-
-                    characterImage.src = 'chemin_vers_' + selectedImage.toLowerCase().replace(/\s/g, '_') + '.jpg';
-                });
-            });
-        });
-    </script>
 
 </body>
 
