@@ -76,7 +76,10 @@ try {
         <?php
         for ($i = 0; $i < count($recipes); $i++) {
             ?>
-        <div class="box">
+
+           <?php $UserID = $i + 1; ?>
+
+        <div class="box" id="<?php echo strval($UserID) ?>">
 
         <?php
                 // Affiche la liste déroulante uniquement à l'intérieur des boîtes
