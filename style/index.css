@@ -13,6 +13,7 @@ body {
     src: url(./assets/fonts/fonts/Apex-Regular.ttf);
     src: url(./assets/fonts/fonts/Apex-ExtraBold.ttf);
 }
+
 @font-face {
     font-family: Apex-Extrabold;
     src: url(./assets/fonts/fonts/Apex-ExtraBold.ttf);
@@ -197,15 +198,95 @@ a:hover .fa-angle-down {
     transform: rotate(-90deg);
 }
 
-.button2 {
+.button2 {  
+    visibility: hidden;
     position: relative;
     margin-top: 0px;
     margin-right: 0px;
 }
 
+.box:hover .button2 {
+    visibility: visible;
+}
+
+/* Ajoutez ces règles CSS pour personnaliser le style du menu déroulant */
 .image-selector {
     position: absolute;
     top: 10px;
     left: 10px;
     z-index: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.image-selector select {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    appearance: none; /* Supprime les styles par défaut du navigateur */
+    font-size: 0; /* Cache le texte du select */
+}
+
+/* Ajoutez ces règles pour améliorer l'apparence du menu déroulant au survol */
+.image-selector:hover {
+    background-color: #f8f8f8;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajoutez ces règles pour améliorer l'apparence de la flèche du menu déroulant */
+.image-selector::after {
+    content: '\25BC'; /* Utilisez une flèche vers le bas Unicode comme contenu après */
+    font-size: 14px;
+    color: #555;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Assurez-vous que la flèche ne bloque pas les événements de souris */
+}
+
+
+/* Ajoutez cette règle CSS */
+.global-selector {
+    display: none;
+}
+
+.box .global-selector {
+    display: block;
+}
+
+.boutique {
+    font-family: Apex-Regular;
+    width: 300px;
+    height: 50px;
+    border-radius: 12px;
+    cursor: pointer;
+    top: 5%;
+}
+
+.boutique:hover {
+    transition: 0.5s;
+    background-color: url(./assets/background_apex.png);
+
+}
+
+
+
+form {
+    justify-content: center;
+    align-items: center;
+}
+
+
+.shop {
+    font-family: Apex-Regular;
+    width: 300px;
+    height: 50px;
+    border-radius: 12px;
+    cursor: pointer;
+    top: 5%;
 }
