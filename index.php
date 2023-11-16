@@ -110,8 +110,6 @@ try {
     </form>
 
 
-
-
     <script src="./js/index.js"></script>
 
     <script>
