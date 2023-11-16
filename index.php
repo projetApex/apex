@@ -78,6 +78,11 @@ try {
             ?>
         <div class="box">
 
+        <?php
+                // Affiche la liste déroulante uniquement à l'intérieur des boîtes
+                if ($i === 0) { // ou toute autre condition pertinente
+                    ?>
+
             <select class="image-selector global-selector" data-character-index="-1">
                 <?php
                     foreach ($recipes as $image) {
@@ -85,6 +90,9 @@ try {
                     }
                     ?>
             </select>
+            <?php
+                }
+                ?>
 
 
 

@@ -126,7 +126,6 @@ body {
     flex-direction: column;
 }
 
-
 .show-options-button {
     background-color: #000000;
     color: white;
@@ -145,8 +144,6 @@ body {
     margin: 15px;
     position: relative;
 }
-
-
 
 a {
     position: relative;
