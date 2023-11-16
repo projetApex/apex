@@ -81,18 +81,22 @@ try {
 
 
 
-                <select class="image-selector global-selector" data-character-index="<?= $i - 1 ?>">
+             
+
+
+
+                <div class="imgchange">
+                    
+                <img class="character-image" src="<?php echo $recipes[$i]['img_perso'] ?>" alt="">
+                   <select class="image-selector global-selector" data-character-index="<?= $i - 1 ?>">
                     <?php
                     foreach ($recipes as $image) {
                         echo '<option value="' . $image['img_path'] . '" > ' . $image['img_number'] . '</option>';
                     }
                     ?>
                 </select>
-
-
-
-
-                <img class="character-image" src="<?php echo $recipes[$i]['img_perso'] ?>" alt="">
+                </div>
+               
                 <div class="skill">
                     <h3 class="perso">
                         <?php echo $recipes4[$i]['name'] ?>
@@ -119,7 +123,7 @@ try {
             <?php
         }
         ?>
-       
+
     </div>
     <form action="shop.php">
         <button type="submit" class="shop">Aller a la boutique</button>
