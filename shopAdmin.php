@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-echo $_SESSION['email'];
 
 if(!isset($_SESSION['email'])) {
     header('Location: connexion.php');
@@ -16,25 +15,32 @@ try
     // $db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', 'root');
     $db = new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';port=' . $_ENV["DB_PORT"] . ';dbname=' .  $_ENV['DB_DATABASE']  . ';charset=utf8', $_ENV['DB_NAME'], $_ENV['DB_PASSWORD']);
 
-    $sql = 'SELECT * FROM img';
+    $sql = 'SELECT * FROM items';
     $recipesStatement = $db->prepare($sql);
     $recipesStatement->execute();
     $recipes = $recipesStatement->fetchAll(PDO::FETCH_ASSOC);
 
-    $sql2 = 'SELECT * FROM spell_img';
-    $recipesStatement2 = $db->prepare($sql2);
-    $recipesStatement2->execute();
-    $recipes2 = $recipesStatement2->fetchAll(PDO::FETCH_ASSOC);
+    //delete item selon sont id
+    if(isset($_POST['delete'])) {
+        $id = $_POST['id'];
+        $sql = 'DELETE FROM items WHERE id_items = ?';
+        $deleteStatement = $db->prepare($sql);
+        $deleteStatement->execute(array($id));
+        header('Location: shopAdmin.php');
+    }
 
-    $sql3 = 'SELECT * FROM spell';
-    $recipesStatement3 = $db->prepare($sql3);
-    $recipesStatement3->execute();
-    $recipes3 = $recipesStatement3->fetchAll(PDO::FETCH_ASSOC);
+    //Modifier un item
+    if(isset($_POST['modifier'])) {
+        $id = $_POST['id'];
+        $prix = $_POST['prix'];
+        $level = $_POST['level'];
+        $skin = $_POST['skin'];
 
-    $sql4 = 'SELECT * FROM personnages';
-    $recipesStatement4 = $db->prepare($sql4);
-    $recipesStatement4->execute();
-    $recipes4 = $recipesStatement4->fetchAll(PDO::FETCH_ASSOC);
+        $sql = 'UPDATE items SET prix = ?, level = ?, skin = ? WHERE id_items = ?';
+        $updateStatement = $db->prepare($sql);
+        $updateStatement->execute(array($prix, $level, $skin, $id));
+        header('Location: shopAdmin.php');
+    }
 
 
 }
@@ -50,73 +56,60 @@ catch (Exception $e)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/shop.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./style/shopAdmin.css">
     <title>Apex Legend</title>
 </head>
 
 <body>
-<div class="contains">
-    <a href="./deconnexion.php">
-        <button>Deconnexion</button>
-    </a>
-    <div class="box">
-        <!-- <a href="character.php?id=1"> -->
-        <img class="wraith" src="<?php echo $recipes[0]['img_perso']?>" alt="">
-        <div class="skill">
-            <h3 class="perso"><?php echo $recipes4[0]['name']?></h3>
-            <img class="spell" src="<?php echo $recipes2[0]['passive_img']?>" alt="">
-            <p class="name"><?php echo $recipes3[0]['passive']?></p>
-            <img class="spell" src="<?php echo $recipes2[0]['tactical_img']?>" alt="">
-            <p class="name"><?php echo $recipes3[0]['tactical']?></p>
-            <img class="spell" src="<?php echo $recipes2[0]['ultime_img']?>" alt="">
-            <p class="name"><?php echo $recipes3[0]['ultime']?></p>
-        </div>
-        <!-- </a> -->
+    <div><a href="./deconnexion.php">
+            <button class="btn">Deconnexion</button>
+        </a>
+
+        <form action="index.php">
+            <button type="submit" class="btn">Menu principal</button>
+        </form>
     </div>
-    <div class="box">
-        <!-- <a href="character.php?id=2"> -->
-        <img class="octane" src="<?php echo $recipes[1]['img_perso']?>" alt="">
-        <div class="skill">
-            <h3 class="perso"><?php echo $recipes4[1]['name']?></h3>
-            <img class="spell" src="<?php echo $recipes2[1]['passive_img']?>" alt="">
-            <p class="name"><?php echo $recipes3[1]['passive']?></p>
-            <img class="spell" src="<?php echo $recipes2[1]['tactical_img']?>" alt="">
-            <p class="name"><?php echo $recipes3[1]['tactical']?></p>
-            <img class="spell" src="<?php echo $recipes2[1]['ultime_img']?>" alt="">
-            <p class="name"><?php echo $recipes3[1]['ultime']?></p>
+
+    <h1>Shop Admin</h1>
+
+
+    <div class="items">
+        <?php
+        for ($i = 1; $i < count($recipes); $i++) {        
+            ?>
+
+        <div class="cards">
+
+            <img src="<?php echo $recipes[$i]['skin'] ?>" alt="">
+
+            <div class="infosItems">
+
+                <form method="POST" class="modifier">
+                    <input type="hidden" name="id" value="<?php echo $recipes[$i]['id_items'] ?>">
+                    <input type="hidden" name="skin" value="<?php echo $recipes[$i]['skin'] ?>">
+                    <input type="text" name="prix" value="<?php echo $recipes[$i]['prix'] ?>">
+                    <input type="text" name="level" value="<?php echo $recipes[$i]['level'] ?>">
+                    <input type="submit" class="btn2" name="modifier" value="Modifier">
+                </form>
+
+                <form method="POST" class="delete">
+                    <input type="hidden" name="id" value="<?php echo $recipes[$i]['id_items'] ?>">
+                    <input type="submit" class="btn2" name="delete" value="Supprimer">
+                </form>
+            </div>
+
+
+
         </div>
-        <!-- </a> -->
+
+        <?php
+        }
+        ?>
     </div>
-    <div class="box">
-        <img class="revenant" src="<?php echo $recipes[2]['img_perso']?>" alt="">
-        <div class="skill">
-            <h3 class="perso"><?php echo $recipes4[2]['name']?></h3>
-            <img class="spell" src="<?php echo $recipes2[2]['passive_img']?>" alt="">
-            <p class="name"><?php echo $recipes3[2]['passive']?></p>
-            <img class="spell" src="<?php echo $recipes2[2]['tactical_img']?>" alt="">
-            <p class="name"><?php echo $recipes3[2]['tactical']?></p>
-            <img class="spell" src="<?php echo $recipes2[2]['ultime_img']?>" alt="">
-            <p class="name"><?php echo $recipes3[2]['ultime']?></p>
-        </div>
-    </div>
-    <div class="box">
-        <img class="catalyst" src="<?php echo $recipes[3]['img_perso']?>" alt="">
-        <div class="skill">
-            <h3 class="perso"><?php echo $recipes4[3]['name']?></h3>
-            <img class="spell" src="<?php echo $recipes2[3]['passive_img']?>" alt="">
-            <p class="name"><?php echo $recipes3[3]['passive']?></p>
-            <img class="spell" src="<?php echo $recipes2[3]['tactical_img']?>" alt="">
-            <p class="name"><?php echo $recipes3[3]['tactical']?></p>
-            <img class="spell" src="<?php echo $recipes2[3]['ultime_img']?>" alt="">
-            <p class="name"><?php echo $recipes3[3]['ultime']?></p>
-        </div>
-    </div>
-</div>
-<form action="index.php">
-    <button type="submit" class="boutique">Menu principal</button>
-</form>
-<!-- <script src="./js/script.js"></script> -->
+
+
+
 </body>
 
 </html>

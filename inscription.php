@@ -40,11 +40,6 @@ $dotenv->load();
                 $_SESSION['id'] = $selectUser->fetch()['id_utilisateur'];
                 header('Location: index.php');
             }
-
-
-
-
-
         } else {
             echo 'Veuillez remplir tous les champs';
         }
@@ -54,20 +49,26 @@ $dotenv->load();
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="./style/log.css">
 </head>
+
 <body>
+    <h1>Inscription</h1>
     <form method="POST" action="">
         <input type="email" name="email" placeholder="email" autocomplete="off">
         <input type="password" name="mdp" placeholder="password" autocomplete="off">
 
-        <input type="submit" name="envoi">
+        <input class="btn2" type="submit" name="envoi" placeholder="Incription">
     </form>
+
+    <p>Vous avez deja un compte ? <a href="./connexion.php">Connectez-vous</a></p>
 </body>
+
 </html>
