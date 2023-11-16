@@ -64,7 +64,7 @@ try {
 
 <body>
     <a href="./deconnexion.php">
-        <button>Deconnexion</button>
+        <buttondeco>Deconnexion</buttondeco>
     </a>
 
     <form action="shop.php">
