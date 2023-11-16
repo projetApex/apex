@@ -11,9 +11,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-try
-{
-    $db = new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';port=' . $_ENV["DB_PORT"] . ';dbname=' .  $_ENV['DB_DATABASE']  . ';charset=utf8', $_ENV['DB_NAME'], $_ENV['DB_PASSWORD']);
+
 function connectToDatabase()
 {
     try {
@@ -104,6 +102,9 @@ catch (Exception $e)
                 </div>
             </div>
         </div>
+        <?php
+        }
+        ?>
     </div>
     <form action="shop.php">
         <button type="submit" class="shop">Aller a la boutique</button>
