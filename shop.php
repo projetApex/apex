@@ -31,7 +31,10 @@ try
     $recipesStatement4->execute();
     $recipes4 = $recipesStatement4->fetchAll(PDO::FETCH_ASSOC);
 
-    
+    $sql5 = 'SELECT * FROM items';
+    $recipesStatement5 = $db->prepare($sql5);
+    $recipesStatement5->execute();
+    $recipes5 = $recipesStatement5->fetchAll(PDO::FETCH_ASSOC);
 }
 catch (Exception $e)
 {
@@ -54,7 +57,7 @@ catch (Exception $e)
     <div class="contains">
         <div class="box">
         <!-- <a href="character.php?id=1"> -->
-            <img class="wraith" src="<?php echo $recipes[0]['img_perso']?>" alt="">
+            <img class="wraith" src="<?php echo $recipes5[3]['skin']?>" alt="">
             <div class="skill">
                 <h3 class="perso"><?php echo $recipes4[0]['name']?></h3>
                 <img class="spell" src="<?php echo $recipes2[0]['passive_img']?>" alt="">
@@ -95,13 +98,14 @@ catch (Exception $e)
         <div class="box">
             <img class="catalyst" src="<?php echo $recipes[3]['img_perso']?>" alt="">
             <div class="skill">
-            <h3 class="perso"><?php echo $recipes4[3]['name']?></h3>
-                <img class="spell" src="<?php echo $recipes2[3]['passive_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[3]['passive']?></p>
-                <img class="spell" src="<?php echo $recipes2[3]['tactical_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[3]['tactical']?></p>
-                <img class="spell" src="<?php echo $recipes2[3]['ultime_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[3]['ultime']?></p>
+
+
+
+
+
+
+
+
             </div>
         </div>
     </div>
