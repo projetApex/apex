@@ -3,7 +3,7 @@
 session_start();
 echo $_SESSION['email'];
 
-if(!isset($_SESSION['email'])) {
+if (!isset($_SESSION['email'])) {
     header('Location: connexion.php');
 }
 
@@ -11,25 +11,21 @@ require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-try
-{
-    $db = new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';port=' . $_ENV["DB_PORT"] . ';dbname=' .  $_ENV['DB_DATABASE']  . ';charset=utf8', $_ENV['DB_NAME'], $_ENV['DB_PASSWORD']);
-function connectToDatabase()
-{
-    try {
-        return new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';port=' . $_ENV["DB_PORT"] . ';dbname=' . $_ENV['DB_DATABASE'] . ';charset=utf8', $_ENV['DB_NAME'], $_ENV['DB_PASSWORD']);
-    } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
-    }
+
+try {
+    return new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';port=' . $_ENV["DB_PORT"] . ';dbname=' . $_ENV['DB_DATABASE'] . ';charset=utf8', $_ENV['DB_NAME'], $_ENV['DB_PASSWORD']);
+} catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
 }
+
 
 try {
     $db = connectToDatabase();
 
     $sql = 'SELECT * FROM img';
-    $recipesStatement = $db->prepare($sql);//prepare sql request
-    $recipesStatement->execute();//execute sql request
-    $recipes = $recipesStatement->fetchAll(PDO::FETCH_ASSOC);//fetch all data from sql request
+    $recipesStatement = $db->prepare($sql); //prepare sql request
+    $recipesStatement->execute(); //execute sql request
+    $recipes = $recipesStatement->fetchAll(PDO::FETCH_ASSOC); //fetch all data from sql request
 
     $sql2 = 'SELECT * FROM spell_img';
     $recipesStatement2 = $db->prepare($sql2);
@@ -46,11 +42,9 @@ try {
     $recipesStatement4->execute();
     $recipes4 = $recipesStatement4->fetchAll(PDO::FETCH_ASSOC);
 
-    
-}
-catch (Exception $e)
-{
-        die('Erreur : ' . $e->getMessage());//stop the process and show error message
+
+} catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage()); //stop the process and show error message
 }
 ?>
 
@@ -66,15 +60,15 @@ catch (Exception $e)
 </head>
 
 <body>
-<a href="./deconnexion.php">
-    <button>Deconnexion</button>
-</a>
+    <a href="./deconnexion.php">
+        <button>Deconnexion</button>
+    </a>
     <div class="contains">
         <?php
         for ($i = 0; $i < count($recipes); $i++) {
             ?>
             <div class="box">
-                
+
                 <select class="image-selector global-selector" data-character-index="-1">
                     <?php
                     foreach ($recipes as $image) {
@@ -103,34 +97,37 @@ catch (Exception $e)
                         <p><a href="" class="button2"><i class="fas fa-angle-down"></i> <span>Description</span></a></p>
                     </div>
                 </div>
-            </div>   
+            </div>
+            <?php
+        }
+        ?>
     </div>
     <form action="shop.php">
-            <button type="submit" class="shop">Aller a la boutique</button>
-        </form>
+        <button type="submit" class="shop">Aller a la boutique</button>
+    </form>
 
-    
 
-    
-        <script src="./js/index.js"></script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const imageRadios = document.querySelectorAll('input[type=radio]');
 
-        imageRadios.forEach((radio) => {
-            radio.addEventListener('change', function () {
-                const selectedImage = this.value;
-                const imageIndex = this.name.split('_')[1];
-                const characterImage = document.querySelector('.character-image[data-character-index="' + imageIndex + '"]');
+    <script src="./js/index.js"></script>
 
-               
-                characterImage.src = 'chemin_vers_' + selectedImage.toLowerCase().replace(/\s/g, '_') + '.jpg';
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const imageRadios = document.querySelectorAll('input[type=radio]');
+
+            imageRadios.forEach((radio) => {
+                radio.addEventListener('change', function () {
+                    const selectedImage = this.value;
+                    const imageIndex = this.name.split('_')[1];
+                    const characterImage = document.querySelector('.character-image[data-character-index="' + imageIndex + '"]');
+
+
+                    characterImage.src = 'chemin_vers_' + selectedImage.toLowerCase().replace(/\s/g, '_') + '.jpg';
+                });
             });
         });
-    });
-</script>
+    </script>
 
 </body>
 
-</html> 
+</html>
