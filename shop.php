@@ -34,6 +34,13 @@ try {
     $recipesStatement5 = $db->prepare($sql5);
     $recipesStatement5->execute();
     $recipes5 = $recipesStatement5->fetchAll(PDO::FETCH_ASSOC);
+
+    $sql6 = 'SELECT * FROM utilisateurs';
+    $recipesStatement6 = $db->prepare($sql6);
+    $recipesStatement6->execute();
+    $recipes6 = $recipesStatement6->fetchAll(PDO::FETCH_ASSOC);
+
+    
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
@@ -51,73 +58,90 @@ try {
 </head>
 
 <body>
+
     <div class="contains">
-        <div class="box">
-            <!-- <a href="character.php?id=1"> -->
-            <img class="wraith" src="<?php echo $recipes5[3]['skin'] ?>" alt="">
-            <div class="skill">
-                <h3 class="perso">
-                    <?php echo $recipes4[0]['name'] ?>
-                </h3>
-                <p class="buy"> Acheter cet item ?</p>
-                <h4 class="prix">
-                    <button class="buttonbuy">
-                    <?php echo $recipes5[3]['prix'] ?> crédits
-                    </button>
-                </h4>
+       
+    <?php
+        for ($i = 0; $i < count($recipes); $i++) {
+            ?>
+
+            <?php $UserID = $i + 1; ?>
+
+            <div class="money">
+                <p class="credit">
+                    <?php echo $recipes6[$i]['credits'] ?> crédits
+                </p>
             </div>
-            <!-- </a> -->
+
+            <div class="box">
+                <!-- <a href="character.php?id=1"> -->
+                <img class="wraith" src="<?php echo $recipes5[3]['skin'] ?>" alt="">
+                <div class="skill">
+                    <h3 class="perso">
+                        <?php echo $recipes4[0]['name'] ?>
+                    </h3>
+                    <p class="buy"> Acheter cet item ?</p>
+                    <h4 class="prix">
+                        <button class="buttonbuy">
+                            <?php echo $recipes5[3]['prix'] ?> crédits
+                        </button>
+                    </h4>
+                </div>
+                <!-- </a> -->
+            </div>
+            <div class="box">
+                <!-- <a href="character.php?id=2"> -->
+                <img class="octane" src="<?php echo $recipes5[6]['skin'] ?>" alt="">
+                <div class="skill">
+                    <h3 class="perso">
+                        <?php echo $recipes4[1]['name'] ?>
+                    </h3>
+                    <p class="buy"> Acheter cet item ?</p>
+                    <h4 class="prix">
+                        <button class="buttonbuy">
+                            <?php echo $recipes5[3]['prix'] ?> crédits
+                        </button>
+                    </h4>
+                </div>
+                <!-- </a> -->
+            </div>
+            <div class="box">
+                <img class="revenant" src="<?php echo $recipes5[9]['skin'] ?>" alt="">
+                <div class="skill">
+                    <h3 class="perso">
+                        <?php echo $recipes4[1]['name'] ?>
+                    </h3>
+                    <p class="buy"> Acheter cet item ?</p>
+                    <h4 class="prix">
+                        <button class="buttonbuy">
+                            <?php echo $recipes5[3]['prix'] ?> crédits
+                        </button>
+                    </h4>
+                </div>
+            </div>
+            <div class="box">
+                <img class="catalyst" src="<?php echo $recipes5[12]['skin'] ?>" alt="">
+                <div class="skill">
+                    <h3 class="perso">
+                        <?php echo $recipes4[1]['name'] ?>
+                    </h3>
+                    <p class="buy"> Acheter cet item ?</p>
+                    <h4 class="prix">
+                        <button class="buttonbuy">
+                            <?php echo $recipes5[3]['prix'] ?> crédits
+                        </button>
+                    </h4>
+                </div>
+            </div>
         </div>
-        <div class="box">
-            <!-- <a href="character.php?id=2"> -->
-            <img class="octane" src="<?php echo $recipes5[6]['skin'] ?>" alt="">
-            <div class="skill">
-                <h3 class="perso">
-                    <?php echo $recipes4[1]['name'] ?>
-                </h3>
-                <p class="buy"> Acheter cet item ?</p>
-                <h4 class="prix">
-                    <button class="buttonbuy">
-                    <?php echo $recipes5[3]['prix'] ?> crédits
-                    </button>
-                </h4>
-            </div>
-            <!-- </a> -->
-        </div>
-        <div class="box">
-            <img class="revenant" src="<?php echo $recipes5[9]['skin'] ?>" alt="">
-            <div class="skill">
-                <h3 class="perso">
-                    <?php echo $recipes4[1]['name'] ?>
-                </h3>
-                <p class="buy"> Acheter cet item ?</p>
-                <h4 class="prix">
-                    <button class="buttonbuy">
-                    <?php echo $recipes5[3]['prix'] ?> crédits
-                    </button>
-                </h4>
-            </div>
-        </div>
-        <div class="box">
-            <img class="catalyst" src="<?php echo $recipes5[12]['skin'] ?>" alt="">
-            <div class="skill">
-                <h3 class="perso">
-                    <?php echo $recipes4[1]['name'] ?>
-                </h3>
-                <p class="buy"> Acheter cet item ?</p>
-                <h4 class="prix">
-                    <button class="buttonbuy">
-                    <?php echo $recipes5[3]['prix'] ?> crédits
-                    </button>
-                </h4>
-            </div>
-            </div>
-        </div>
+        <?php
+        }
+        ?>
     </div>
     <form action="index.php">
         <button type="submit" class="boutique">Menu principal</button>
     </form>
-    <!-- <script src="./js/script.js"></script> -->
+    <script src="./js/index.js"></script>
 </body>
 
 </html>
