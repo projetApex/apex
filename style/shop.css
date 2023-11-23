@@ -1,5 +1,4 @@
 body {
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -88,7 +87,20 @@ body {
 
 }
 
-
+.money {
+    position: absolute;
+    top: 3%;
+    left: 1%;
+    width: 200px;
+    height: 50px;
+    font-size: 15px;
+    font-family: Apex-Regular;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    margin-left: 25px;
+    text-align: center;
+}
 
 
 .box:hover .name {
