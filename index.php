@@ -79,11 +79,7 @@ try {
                 <p class="credit">
                     <?php echo $recipes5[$i]['credits'] ?> crédits
                 </p>
-<<<<<<< HEAD
-
-=======
                 
->>>>>>> 35b051b630fd13fef54e42acd3a486f57ab0a2cc
             </div>
             <div class="box">
 
