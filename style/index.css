@@ -178,25 +178,6 @@ body {
     position: relative;
 }
 
-
-
-a {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background: #fff;
-    box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.4);
-    border-radius: 20px;
-    transition: width 0.5s ease-out;
-    width: 8px;
-    padding: 12px 20px 12px 16px;
-    font-size: 20px;
-    color: #00f260;
-    text-decoration: none;
-    animation: 0.5s infinite alternate 3s boutton;
-}
-
 span {
     position: relative;
     display: block;
@@ -256,22 +237,13 @@ a:hover .fa-angle-down {
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
-    visibility: hidden;
+   visibility: hidden;
 }
 
-.image-selector select {
-    width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    appearance: none;
-    font-size: 0;
-    visibility: hidden;
-   
-}
 
 .box:hover .image-selector {
     display: flex;
+    visibility: visible;
 }
 
 
@@ -335,6 +307,3 @@ form {
     top: 5%;
 }
 
-.image-selector global-selector {
-    visibility: hidden;
-}

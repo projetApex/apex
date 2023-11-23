@@ -64,7 +64,7 @@ try {
 
 <body>
     <a href="./deconnexion.php">
-        <buttondeco>Deconnexion</buttondeco>
+        <button2>Deconnexion</button2>
     </a>
 
 
@@ -77,7 +77,7 @@ try {
 
             <?php $UserID = $i + 1; ?>
 
-            <div class="box" id="<?php echo strval($UserID) ?>">
+            <div class="box">
 
                 <div class="imgchange">
 
@@ -108,7 +108,8 @@ try {
                         <?php echo $recipes3[$i]['ultime'] ?>
                     </p>
                     <div class="titre">
-                        <p><a href="" class="button2"><i class="fas fa-angle-down"></i> <span>Description</span></a></p>
+                        <p class="button2" id="<?php echo strval($UserID) ?>">
+                            <span>Description</span></p>
                     </div>
                 </div>
 
