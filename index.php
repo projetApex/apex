@@ -2,12 +2,9 @@
 
 session_start();
 
-echo $_SESSION['id_inventaire'];
-
 if (!isset($_SESSION['email'])) {
     header('Location: connexion.php');
 }
-
 
 require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -47,6 +44,11 @@ try {
     $recipesStatement4->execute();
     $recipes4 = $recipesStatement4->fetchAll(PDO::FETCH_ASSOC);
 
+    $sql5 = 'SELECT * FROM utilisateurs';
+    $recipesStatement5 = $db->prepare($sql5);
+    $recipesStatement5->execute();
+    $recipes5 = $recipesStatement5->fetchAll(PDO::FETCH_ASSOC);
+
 
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage()); //stop the process and show error message
@@ -66,63 +68,62 @@ try {
 
 <body>
     <a href="./deconnexion.php">
-        <buttondeco>Deconnexion</buttondeco>
+        <button class="deconnexion">Deconnexion</button>
     </a>
-
-
-
 
     <div class="contains">
         <?php
         for ($i = 0; $i < count($recipes); $i++) {
             ?>
 
-            <?php $UserID = $i + 1; ?>
+        <?php $UserID = $i + 1; ?>
 
-            <div class="box" id="<?php echo strval($UserID) ?>">
+        <div class="money">
+            <p class="credit">
+                <?php echo $recipes5[$i]['credits'] ?> crédits
+            </p>
 
+        </div>
+        <div class="box">
 
+            <div class="imgchange">
 
-             
-
-
-
-                <div class="imgchange">
-                    
                 <img class="character-image" src="<?php echo $recipes[$i]['img_perso'] ?>" alt="">
-                   <select class="image-selector global-selector" data-character-index="<?= $i - 1 ?>">
+                <select class="image-selector global-selector" data-character-index="<?= $i - 1 ?>">
                     <?php
-                    foreach ($recipes as $image) {
-                        echo '<option value="' . $image['img_path'] . '" > ' . $image['img_number'] . '</option>';
-                    }
-                    ?>
+                        foreach ($recipes as $image) {
+                            echo '<option value="' . $image['img_path'] . '" > ' . $image['img_number'] . '</option>';
+                        }
+                        ?>
                 </select>
-                </div>
-               
-                <div class="skill">
-                    <h3 class="perso">
-                        <?php echo $recipes4[$i]['name'] ?>
-                    </h3>
-                    <img class="spell" src="<?php echo $recipes2[$i]['passive_img'] ?>" alt="">
-                    <p class="name">
-                        <?php echo $recipes3[$i]['passive'] ?>
-                    </p>
-                    <img class="spell" src="<?php echo $recipes2[$i]['tactical_img'] ?>" alt="">
-                    <p class="name">
-                        <?php echo $recipes3[$i]['tactical'] ?>
-                    </p>
-                    <img class="spell" src="<?php echo $recipes2[$i]['ultime_img'] ?>" alt="">
-                    <p class="name">
-                        <?php echo $recipes3[$i]['ultime'] ?>
-                    </p>
-                    <div class="titre">
-                        <p><a href="" class="button2"><i class="fas fa-angle-down"></i> <span>Description</span></a></p>
-                    </div>
-                </div>
-
             </div>
 
-            <?php
+            <div class="skill">
+                <h3 class="perso">
+                    <?php echo $recipes4[$i]['name'] ?>
+                </h3>
+                <img class="spell" src="<?php echo $recipes2[$i]['passive_img'] ?>" alt="">
+                <p class="name">
+                    <?php echo $recipes3[$i]['passive'] ?>
+                </p>
+                <img class="spell" src="<?php echo $recipes2[$i]['tactical_img'] ?>" alt="">
+                <p class="name">
+                    <?php echo $recipes3[$i]['tactical'] ?>
+                </p>
+                <img class="spell" src="<?php echo $recipes2[$i]['ultime_img'] ?>" alt="">
+                <p class="name">
+                    <?php echo $recipes3[$i]['ultime'] ?>
+                </p>
+                <div class="titre">
+                    <p class="button2" id="<?php echo strval($UserID) ?>">
+                        <span>Description</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <?php
         }
         ?>
 
