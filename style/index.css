@@ -29,6 +29,7 @@ body {
 }
 
 .box {
+    position: relative;
     display: flex;
     height: 600px;
     width: 300px;
@@ -37,6 +38,8 @@ body {
     cursor: pointer;
     transition: 0.5s;
 }
+
+
 
 .box:hover {
     transform: scale(1.1);
@@ -243,6 +246,8 @@ a:hover .fa-angle-down {
 
 
 .image-selector {
+    display: none;
+    position: absolute;
     top: 10px;
     left: 10px;
     z-index: 1;
@@ -251,6 +256,7 @@ a:hover .fa-angle-down {
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
+    visibility: hidden;
 }
 
 .image-selector select {
@@ -260,8 +266,14 @@ a:hover .fa-angle-down {
     border-radius: 5px;
     appearance: none;
     font-size: 0;
+    visibility: hidden;
    
 }
+
+.box:hover .image-selector {
+    display: flex;
+}
+
 
 
 .image-selector:hover {
@@ -321,4 +333,8 @@ form {
     border-radius: 12px;
     cursor: pointer;
     top: 5%;
+}
+
+.image-selector global-selector {
+    visibility: hidden;
 }
