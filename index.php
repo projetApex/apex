@@ -44,11 +44,6 @@ try {
     $recipesStatement4->execute();
     $recipes4 = $recipesStatement4->fetchAll(PDO::FETCH_ASSOC);
 
-    $sql5 = 'SELECT * FROM utilisateurs';
-    $recipesStatement5 = $db->prepare($sql5);
-    $recipesStatement5->execute();
-    $recipes5 = $recipesStatement5->fetchAll(PDO::FETCH_ASSOC);
-
 
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage()); //stop the process and show error message
@@ -80,7 +75,7 @@ try {
 
         <div class="money">
             <p class="credit">
-                <?php echo $recipes5[$i]['credits'] ?> crédits
+                <?php echo $_SESSION['credits']; ?> crédits
             </p>
 
         </div>
