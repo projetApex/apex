@@ -29,6 +29,7 @@ body {
 }
 
 .box {
+    position: relative;
     display: flex;
     height: 600px;
     width: 300px;
@@ -37,6 +38,8 @@ body {
     cursor: pointer;
     transition: 0.5s;
 }
+
+
 
 .box:hover {
     transform: scale(1.1);
@@ -174,9 +177,8 @@ body {
 .button {
     margin: 15px;
     position: relative;
+    
 }
-
-
 
 a {
     position: absolute;
@@ -184,14 +186,16 @@ a {
     font-family: Apex-Regular;
     flex-direction: row;
     align-items: center;
-    top: 5%;
-    background: white;
-    box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.4);
-    border-radius: 20px;
-    width: 8px;
-    padding: 12px 20px 12px 16px;
-    font-size: 20px;
+    top: 5%;  
+    text-decoration: none; 
+}
+.deconnexion {
+    font-family: Apex-Regular;
     text-decoration: none;
+    width: 300px;
+    height: 50px;
+    border-radius: 12px;
+    cursor: pointer;
 }
 
 span {
@@ -232,6 +236,8 @@ span {
 
 
 .image-selector {
+    display: none;
+    position: absolute;
     top: 10px;
     left: 10px;
     z-index: 1;
@@ -240,17 +246,15 @@ span {
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
+   visibility: hidden;
 }
 
-.image-selector select {
-    width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    appearance: none;
-    font-size: 0;
-   
+
+.box:hover .image-selector {
+    display: flex;
+    visibility: visible;
 }
+
 
 
 .image-selector:hover {
@@ -305,9 +309,12 @@ form {
 
 .shop {
     font-family: Apex-Regular;
+    position: absolute;
     width: 300px;
     height: 50px;
     border-radius: 12px;
     cursor: pointer;
-    top: 5%;
+    top: 91%;
+    left: 42%;
 }
+

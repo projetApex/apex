@@ -63,9 +63,6 @@ try {
         <button class="deconnexion">Deconnexion</button>
     </a>
 
-
-
-
     <div class="contains">
         <?php
         for ($i = 0; $i < count($recipes); $i++) {
@@ -73,26 +70,20 @@ try {
 
             <?php $UserID = $i + 1; ?>
 
-            <div class="box" id="<?php echo strval($UserID) ?>">
-
-
-
-             
-
-
+            <div class="box">
 
                 <div class="imgchange">
-                    
-                <img class="character-image" src="<?php echo $recipes[$i]['img_perso'] ?>" alt="">
-                   <select class="image-selector global-selector" data-character-index="<?= $i - 1 ?>">
-                    <?php
-                    foreach ($recipes as $image) {
-                        echo '<option value="' . $image['img_path'] . '" > ' . $image['img_number'] . '</option>';
-                    }
-                    ?>
-                </select>
+
+                    <img class="character-image" src="<?php echo $recipes[$i]['img_perso'] ?>" alt="">
+                    <select class="image-selector global-selector" data-character-index="<?= $i - 1 ?>">
+                        <?php
+                        foreach ($recipes as $image) {
+                            echo '<option value="' . $image['img_path'] . '" > ' . $image['img_number'] . '</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
-               
+
                 <div class="skill">
                     <h3 class="perso">
                         <?php echo $recipes4[$i]['name'] ?>
@@ -110,7 +101,8 @@ try {
                         <?php echo $recipes3[$i]['ultime'] ?>
                     </p>
                     <div class="titre">
-                        <p><a href="" class="button2"><i class="fas fa-angle-down"></i> <span>Description</span></a></p>
+                        <p class="button2" id="<?php echo strval($UserID) ?>">
+                            <span>Description</span></p>
                     </div>
                 </div>
 
