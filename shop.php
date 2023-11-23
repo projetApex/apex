@@ -6,10 +6,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-try
-{
-	// $db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', 'root');
-    $db = new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';port=' . $_ENV["DB_PORT"] . ';dbname=' .  $_ENV['DB_DATABASE']  . ';charset=utf8', $_ENV['DB_NAME'], $_ENV['DB_PASSWORD']);
+try {
+    // $db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', 'root');
+    $db = new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';port=' . $_ENV["DB_PORT"] . ';dbname=' . $_ENV['DB_DATABASE'] . ';charset=utf8', $_ENV['DB_NAME'], $_ENV['DB_PASSWORD']);
 
     $sql = 'SELECT * FROM img';
     $recipesStatement = $db->prepare($sql);
@@ -31,11 +30,12 @@ try
     $recipesStatement4->execute();
     $recipes4 = $recipesStatement4->fetchAll(PDO::FETCH_ASSOC);
 
-    
-}
-catch (Exception $e)
-{
-        die('Erreur : ' . $e->getMessage());    
+    $sql5 = 'SELECT * FROM items';
+    $recipesStatement5 = $db->prepare($sql5);
+    $recipesStatement5->execute();
+    $recipes5 = $recipesStatement5->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
 }
 ?>
 
@@ -53,61 +53,70 @@ catch (Exception $e)
 <body>
     <div class="contains">
         <div class="box">
-        <!-- <a href="character.php?id=1"> -->
-            <img class="wraith" src="<?php echo $recipes[0]['img_perso']?>" alt="">
+            <!-- <a href="character.php?id=1"> -->
+            <img class="wraith" src="<?php echo $recipes5[3]['skin'] ?>" alt="">
             <div class="skill">
-                <h3 class="perso"><?php echo $recipes4[0]['name']?></h3>
-                <img class="spell" src="<?php echo $recipes2[0]['passive_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[0]['passive']?></p>
-                <img class="spell" src="<?php echo $recipes2[0]['tactical_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[0]['tactical']?></p>
-                <img class="spell" src="<?php echo $recipes2[0]['ultime_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[0]['ultime']?></p>
+                <h3 class="perso">
+                    <?php echo $recipes4[0]['name'] ?>
+                </h3>
+                <p class="buy"> Acheter cet item ?</p>
+                <h4 class="prix">
+                    <button class="buttonbuy">
+                    <?php echo $recipes5[3]['prix'] ?> crédits
+                    </button>
+                </h4>
             </div>
-        <!-- </a> -->
+            <!-- </a> -->
         </div>
         <div class="box">
-        <!-- <a href="character.php?id=2"> -->
-            <img class="octane" src="<?php echo $recipes[1]['img_perso']?>" alt="">
+            <!-- <a href="character.php?id=2"> -->
+            <img class="octane" src="<?php echo $recipes5[6]['skin'] ?>" alt="">
             <div class="skill">
-            <h3 class="perso"><?php echo $recipes4[1]['name']?></h3>
-                <img class="spell" src="<?php echo $recipes2[1]['passive_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[1]['passive']?></p>
-                <img class="spell" src="<?php echo $recipes2[1]['tactical_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[1]['tactical']?></p>
-                <img class="spell" src="<?php echo $recipes2[1]['ultime_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[1]['ultime']?></p>
+                <h3 class="perso">
+                    <?php echo $recipes4[1]['name'] ?>
+                </h3>
+                <p class="buy"> Acheter cet item ?</p>
+                <h4 class="prix">
+                    <button class="buttonbuy">
+                    <?php echo $recipes5[3]['prix'] ?> crédits
+                    </button>
+                </h4>
             </div>
-        <!-- </a> -->
+            <!-- </a> -->
         </div>
         <div class="box">
-            <img class="revenant" src="<?php echo $recipes[2]['img_perso']?>" alt="">
+            <img class="revenant" src="<?php echo $recipes5[9]['skin'] ?>" alt="">
             <div class="skill">
-            <h3 class="perso"><?php echo $recipes4[2]['name']?></h3>
-                <img class="spell" src="<?php echo $recipes2[2]['passive_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[2]['passive']?></p>
-                <img class="spell" src="<?php echo $recipes2[2]['tactical_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[2]['tactical']?></p>
-                <img class="spell" src="<?php echo $recipes2[2]['ultime_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[2]['ultime']?></p>
+                <h3 class="perso">
+                    <?php echo $recipes4[1]['name'] ?>
+                </h3>
+                <p class="buy"> Acheter cet item ?</p>
+                <h4 class="prix">
+                    <button class="buttonbuy">
+                    <?php echo $recipes5[3]['prix'] ?> crédits
+                    </button>
+                </h4>
             </div>
         </div>
         <div class="box">
-            <img class="catalyst" src="<?php echo $recipes[3]['img_perso']?>" alt="">
+            <img class="catalyst" src="<?php echo $recipes5[12]['skin'] ?>" alt="">
             <div class="skill">
-            <h3 class="perso"><?php echo $recipes4[3]['name']?></h3>
-                <img class="spell" src="<?php echo $recipes2[3]['passive_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[3]['passive']?></p>
-                <img class="spell" src="<?php echo $recipes2[3]['tactical_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[3]['tactical']?></p>
-                <img class="spell" src="<?php echo $recipes2[3]['ultime_img']?>" alt="">
-                <p class="name"><?php echo $recipes3[3]['ultime']?></p>
+                <h3 class="perso">
+                    <?php echo $recipes4[1]['name'] ?>
+                </h3>
+                <p class="buy"> Acheter cet item ?</p>
+                <h4 class="prix">
+                    <button class="buttonbuy">
+                    <?php echo $recipes5[3]['prix'] ?> crédits
+                    </button>
+                </h4>
+            </div>
             </div>
         </div>
     </div>
     <form action="index.php">
-            <button type="submit" class="boutique">Menu principal</button>
-        </form>
+        <button type="submit" class="boutique">Menu principal</button>
+    </form>
     <!-- <script src="./js/script.js"></script> -->
 </body>
 
