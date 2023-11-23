@@ -38,6 +38,8 @@ $dotenv->load();
                 $_SESSION['email'] = $email;
                 $_SESSION['mdp'] = $mdp;
                 $_SESSION['id'] = $selectUser->fetch()['id_utilisateur'];
+                $_SESSION['id_inventaire'] = $selectUser->fetch()['id_inventaire'];
+
                 header('Location: index.php');
             }
         } else {
