@@ -1,11 +1,13 @@
 <?php
 
 session_start();
-echo $_SESSION['email'];
+
+echo $_SESSION['id_inventaire'];
 
 if (!isset($_SESSION['email'])) {
     header('Location: connexion.php');
 }
+
 
 require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);

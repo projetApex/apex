@@ -24,6 +24,7 @@ if(isset($_POST['envoi'])) {
                     $_SESSION['email'] = $email;
                     $_SESSION['mdp'] = $mdp;
                     $_SESSION['id'] = $recupUser->fetch()['id_utilisateur'];
+
                     header('Location: shopAdmin.php');
 
                 } else {

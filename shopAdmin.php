@@ -62,15 +62,12 @@ catch (Exception $e)
 </head>
 
 <body>
-    <div>
 
-        <a href="./deconnexion.php">
-            <button class="btn">Deconnexion</button>
-        </a>
-
-    </div>
 
     <h1>Shop Admin</h1>
+    <a href="./deconnexion.php">
+        <button class="btn">Deconnexion</button>
+    </a>
 
 
     <div class="items">
