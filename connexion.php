@@ -21,16 +21,21 @@ if(isset($_POST['envoi'])) {
             if ($recupUser->rowCount() > 0) {
 
                 if($email == $_ENV['ADMIN_EMAIL'] && $mdp == $_ENV['ADMIN_PASSWORD']) {
+                    $list = $recupUser->fetch();
                     $_SESSION['email'] = $email;
                     $_SESSION['mdp'] = $mdp;
-                    $_SESSION['id'] = $recupUser->fetch()['id_utilisateur'];
+                    $_SESSION['id'] = $list['id_utilisateur'];
+                    $_SESSION['credits'] = $list['credits'];
 
                     header('Location: shopAdmin.php');
 
                 } else {
+                    $list = $recupUser->fetch();
                     $_SESSION['email'] = $email;
                     $_SESSION['mdp'] = $mdp;
-                    $_SESSION['id'] = $recupUser->fetch()['id_utilisateur'];
+                    $_SESSION['id'] = $list['id_utilisateur'];
+                    $_SESSION['credits'] = $list['credits'];
+                    
                     header('Location: index.php');
                 }
 
