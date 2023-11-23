@@ -35,6 +35,7 @@ if(isset($_POST['envoi'])) {
                     $_SESSION['mdp'] = $mdp;
                     $_SESSION['id'] = $list['id_utilisateur'];
                     $_SESSION['credits'] = $list['credits'];
+                    $_SESSION['id_inventaire'] = $list['id_inventaire'];
                     
                     header('Location: index.php');
                 }

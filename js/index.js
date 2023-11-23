@@ -1,5 +1,13 @@
 const box = document.querySelectorAll('.button2');
 
+const buttonbuy = document.querySelectorAll(".buttonbuy");
+
+buttonbuy.forEach((buttonbuy) => {
+  buttonbuy.addEventListener("click", () => {
+    document.location.href = "shop.php?id=" + buttonbuy.id + "";
+  });
+});
+
 box.forEach((box) => {
     box.addEventListener('click', () => {
         document.location.href = 'character.php?id=' + box.id + '';

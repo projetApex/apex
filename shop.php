@@ -9,6 +9,8 @@ $dotenv->load();
 
 
 try {
+
+
     // $db = new PDO('mysql:host=localhost;dbname=apex;charset=utf8', 'root', 'root');
     $db = new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';port=' . $_ENV["DB_PORT"] . ';dbname=' . $_ENV['DB_DATABASE'] . ';charset=utf8', $_ENV['DB_NAME'], $_ENV['DB_PASSWORD']);
 
@@ -43,6 +45,52 @@ try {
     $recipes6 = $recipesStatement6->fetchAll(PDO::FETCH_ASSOC);
 
     
+    $idutilisateur = $_SESSION['id'];
+
+
+    $sql10 = 'SELECT credits FROM utilisateurs WHERE id_utilisateur = '.$idutilisateur.'';
+    $recipesStatement10 = $db->prepare($sql10);
+    $recipesStatement10->execute();
+    $recipes10 = $recipesStatement10->fetch(PDO::FETCH_ASSOC);
+    
+     // Systeme d'achat d'items
+     if(isset($_GET['id'])) {
+        $idItems = $_GET['id'];
+        $idInventaire = $_SESSION['id_inventaire'];
+        $idutilisateur = $_SESSION['id'];
+
+        $sql9 = 'SELECT prix FROM items WHERE id_items = '.$idItems.'';
+        $recipesStatement9 = $db->prepare($sql9);
+        $recipesStatement9->execute();
+        $recipes9 = $recipesStatement9->fetch(PDO::FETCH_ASSOC);
+        
+
+        
+        if($_SESSION['credits'] < $recipes9['prix']) {
+            echo 'Vous n\'avez pas assez de crédits';
+
+
+        } else {
+            echo 'Vous avez acheté cet item';
+
+            $sql7 = 'UPDATE inventaire SET id_items1 = '.$idItems.' WHERE id_inventaire = '.$idInventaire.'';
+            $recipesStatement7 = $db->prepare($sql7);
+            $recipesStatement7->execute();
+
+        
+            $sql8 = 'UPDATE utilisateurs SET credits = credits - (SELECT prix FROM items WHERE id_items = '.$idItems.') WHERE id_utilisateur = '.$idutilisateur.'';
+            $recipesStatement8 = $db->prepare($sql8);
+            $recipesStatement8->execute();
+    
+        }
+
+
+      
+
+       
+    
+    };
+    
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
@@ -71,7 +119,7 @@ try {
 
         <div class="money">
             <p class="credit">
-                <?php echo $_SESSION['credits']; ?> crédits
+                <?php  echo $recipes10['credits'] ?> crédits
             </p>
         </div>
 
@@ -84,7 +132,7 @@ try {
                 </h3>
                 <p class="buy"> Acheter cet item ?</p>
                 <h4 class="prix">
-                    <button class="buttonbuy">
+                    <button class="buttonbuy" id="4">
                         <?php echo $recipes5[3]['prix'] ?> crédits
                     </button>
                 </h4>
@@ -100,8 +148,8 @@ try {
                 </h3>
                 <p class="buy"> Acheter cet item ?</p>
                 <h4 class="prix">
-                    <button class="buttonbuy">
-                        <?php echo $recipes5[3]['prix'] ?> crédits
+                    <button class="buttonbuy" id="7">
+                        <?php echo $recipes5[6]['prix'] ?> crédits
                     </button>
                 </h4>
             </div>
@@ -111,12 +159,12 @@ try {
             <img class="revenant" src="<?php echo $recipes5[9]['skin'] ?>" alt="">
             <div class="skill">
                 <h3 class="perso">
-                    <?php echo $recipes4[1]['name'] ?>
+                    <?php echo $recipes4[2]['name'] ?>
                 </h3>
                 <p class="buy"> Acheter cet item ?</p>
                 <h4 class="prix">
-                    <button class="buttonbuy">
-                        <?php echo $recipes5[3]['prix'] ?> crédits
+                    <button class="buttonbuy" id="10">
+                        <?php echo $recipes5[9]['prix'] ?> crédits
                     </button>
                 </h4>
             </div>
@@ -125,12 +173,13 @@ try {
             <img class="catalyst" src="<?php echo $recipes5[12]['skin'] ?>" alt="">
             <div class="skill">
                 <h3 class="perso">
-                    <?php echo $recipes4[1]['name'] ?>
+                    <?php echo $recipes4[3]['name'] ?>
                 </h3>
                 <p class="buy"> Acheter cet item ?</p>
                 <h4 class="prix">
-                    <button class="buttonbuy">
-                        <?php echo $recipes5[3]['prix'] ?> crédits
+                    <button class="buttonbuy" id="13">
+                        <?php
+                         echo $recipes5[12]['prix'] ?> crédits
                     </button>
                 </h4>
             </div>
