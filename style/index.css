@@ -70,6 +70,7 @@ body {
     font-size: 18px;
     text-align: center;
     color: white;
+    font-family: Apex-Regular;
 }
 
 .box:hover .perso,
@@ -176,6 +177,18 @@ body {
 .button {
     margin: 15px;
     position: relative;
+}
+
+a {
+    position: absolute;
+    display: flex;
+    font-family: Apex-Regular;
+    flex-direction: row;
+    align-items: center;
+    top: 5%;   
+}
+.deconnexion {
+    font-family: Apex-Regular;
 }
 
 span {
