@@ -81,6 +81,8 @@ try {
             $sql8 = 'UPDATE utilisateurs SET credits = credits - (SELECT prix FROM items WHERE id_items = '.$idItems.') WHERE id_utilisateur = '.$idutilisateur.'';
             $recipesStatement8 = $db->prepare($sql8);
             $recipesStatement8->execute();
+
+            header('Location: shop.php');
     
         }
 
@@ -129,6 +131,7 @@ try {
             <div class="skill">
                 <h3 class="perso">
                     <?php echo $recipes4[0]['name'] ?>
+
                 </h3>
                 <p class="buy"> Acheter cet item ?</p>
                 <h4 class="prix">

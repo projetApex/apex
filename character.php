@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
@@ -23,6 +25,23 @@ if (isset($_GET['id'])) {
     $characterStatement->execute();
     $characterData = $characterStatement->fetch(PDO::FETCH_ASSOC);
 
+
+    $idinventaire = $_SESSION['id_inventaire'];
+
+    $sql2 = 'SELECT * FROM inventaire WHERE id_inventaire = '.$idinventaire.'';
+    $recipesStatement2 = $db->prepare($sql2);
+    $recipesStatement2->execute();
+    $recipes2 = $recipesStatement2->fetch(PDO::FETCH_ASSOC);
+
+
+    $sql3 = 'SELECT * FROM items WHERE id_items = '.$recipes2['id_items1'].'';
+    $recipesStatement3 = $db->prepare($sql3);
+    $recipesStatement3->execute();
+    $recipes3 = $recipesStatement3->fetch(PDO::FETCH_ASSOC);
+
+
+
+    $imgSelect = $characterData['img_perso'];
 }
 ?>
 
@@ -33,16 +52,29 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/charac.css">
-    <title>Document</title>
+    <title>Story</title>
 </head>
 
 <body>
     <h1 class="charac_title">
         <?php echo $characterData['name'] ?>
     </h1>
+
+    <select class="image-selector global-selector">
+        <?php
+    for ($i = 1; $i < count($recipes2); $i++) {
+        $items += 1;
+        echo '<option value="' . $recipes3['skin'] . '">' . $recipes2['id_items' . $items] . '</option>';
+    }
+    ?>
+    </select>
+
+
     <div class="charac_content">
 
-        <img class="charac_perso" src="<?php echo $characterData['img_perso'] ?>" alt="">
+
+
+        <img class="charac_perso" src="<?php echo $imgSelect  ?>" alt="">
         <div class="charac_story">
             <p>
                 <?php echo $characterData['story'] ?>
@@ -65,6 +97,21 @@ if (isset($_GET['id'])) {
             </div>
         </div>
     </div>
+
+    <script>
+    function updateImgSelect() {
+        var select = document.querySelector('.image-selector');
+        var selectedOption = select.options[select.selectedIndex];
+        var imgSelect = selectedOption.value;
+
+        // Mettez à jour l'image sur la page
+        document.querySelector('.charac_perso').src = imgSelect;
+    }
+
+    // Attachez la fonction updateImgSelect au changement de la sélection
+    document.querySelector('.image-selector').addEventListener('change', updateImgSelect);
+    </script>
 </body>
+
 
 </html>

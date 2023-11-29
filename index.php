@@ -43,6 +43,13 @@ try {
     $recipesStatement4 = $db->prepare($sql4);
     $recipesStatement4->execute();
     $recipes4 = $recipesStatement4->fetchAll(PDO::FETCH_ASSOC);
+    
+    $idutilisateur = $_SESSION['id'];
+
+    $sql10 = 'SELECT credits FROM utilisateurs WHERE id_utilisateur = '.$idutilisateur.'';
+    $recipesStatement10 = $db->prepare($sql10);
+    $recipesStatement10->execute();
+    $recipes10 = $recipesStatement10->fetch(PDO::FETCH_ASSOC);
 
 
 } catch (Exception $e) {
@@ -75,22 +82,17 @@ try {
 
         <div class="money">
             <p class="credit">
-                <?php echo $_SESSION['credits']; ?> crédits
+                <?php  echo $recipes10['credits'] ?> crédits
             </p>
-
         </div>
+
+
         <div class="box">
 
             <div class="imgchange">
 
                 <img class="character-image" src="<?php echo $recipes[$i]['img_perso'] ?>" alt="">
-                <select class="image-selector global-selector" data-character-index="<?= $i - 1 ?>">
-                    <?php
-                        foreach ($recipes as $image) {
-                            echo '<option value="' . $image['img_path'] . '" > ' . $image['img_number'] . '</option>';
-                        }
-                        ?>
-                </select>
+
             </div>
 
             <div class="skill">
