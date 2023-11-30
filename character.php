@@ -26,14 +26,16 @@ if (isset($_GET['id'])) {
     $characterData = $characterStatement->fetch(PDO::FETCH_ASSOC);
 
 
+    //recuperation de l'id de l'inventaire selon l'utilisateur connecté
     $idinventaire = $_SESSION['id_inventaire'];
 
+    // Recuperation de l'inventaire selon l'id iventaire
     $sql2 = 'SELECT * FROM inventaire WHERE id_inventaire = '.$idinventaire.'';
     $recipesStatement2 = $db->prepare($sql2);
     $recipesStatement2->execute();
     $recipes2 = $recipesStatement2->fetch(PDO::FETCH_ASSOC);
 
-
+    // Recuperation des items selon l'id de l'inventaire
     $sql3 = 'SELECT * FROM items WHERE id_items = '.$recipes2['id_items1'].'';
     $recipesStatement3 = $db->prepare($sql3);
     $recipesStatement3->execute();

@@ -44,10 +44,12 @@ try {
     $recipesStatement6->execute();
     $recipes6 = $recipesStatement6->fetchAll(PDO::FETCH_ASSOC);
 
-    
+
+    //On recupere l'id de l'utilisateur avec les sessions
     $idutilisateur = $_SESSION['id'];
 
 
+    //On recupere les credits de l'utilisateur selon son id
     $sql10 = 'SELECT credits FROM utilisateurs WHERE id_utilisateur = '.$idutilisateur.'';
     $recipesStatement10 = $db->prepare($sql10);
     $recipesStatement10->execute();
@@ -59,6 +61,7 @@ try {
         $idInventaire = $_SESSION['id_inventaire'];
         $idutilisateur = $_SESSION['id'];
 
+        //On récupère le prix de l'item
         $sql9 = 'SELECT prix FROM items WHERE id_items = '.$idItems.'';
         $recipesStatement9 = $db->prepare($sql9);
         $recipesStatement9->execute();
@@ -73,11 +76,13 @@ try {
         } else {
             echo 'Vous avez acheté cet item';
 
+            //Ajout de notre achat dans notre invetaire
             $sql7 = 'UPDATE inventaire SET id_items1 = '.$idItems.' WHERE id_inventaire = '.$idInventaire.'';
             $recipesStatement7 = $db->prepare($sql7);
             $recipesStatement7->execute();
 
         
+            //Update de nos crédits
             $sql8 = 'UPDATE utilisateurs SET credits = credits - (SELECT prix FROM items WHERE id_items = '.$idItems.') WHERE id_utilisateur = '.$idutilisateur.'';
             $recipesStatement8 = $db->prepare($sql8);
             $recipesStatement8->execute();
